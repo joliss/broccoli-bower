@@ -1,5 +1,7 @@
 # master
 
+# 0.2.0
+
 * Overwrite files in merged tree if `lib` and `"main"` files collide
 * Ignore files in `bower_components`; we now only care about subdirectories
   (and symlinks to directories)
