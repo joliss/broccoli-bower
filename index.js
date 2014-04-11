@@ -25,7 +25,7 @@ MainFilePicker.prototype.write = function (readTree, destDir) {
     var mainFile = this.mainFiles[i]
     try {
       if (mainFile.indexOf('*') !== -1 || mainFile.indexOf('?') !== -1) {
-        throw new Error('In ' + this.dir + ': Glob patterns in bower\'s `main` property are not allowed: ' + mainFile)
+        throw new Error('In ' + this.dir + ': Glob (wildcard) patterns in bower\'s `main` property are not allowed: ' + mainFile)
       }
       helpers.copyPreserveSync(
         path.join(this.dir, mainFile),
