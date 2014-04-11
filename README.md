@@ -17,7 +17,7 @@ Because of that, this plugin should be regarded as a pre-alpha proof of
 concept to demonstrate what might be possible when we combine Bower with a
 build system sitting on top.
 
-You should not rely no its behavior for your production apps, and you should
+You should not rely on its behavior for your production apps, and you should
 not rely on its behavior to distribute your libraries.
 
 There will be many cases where the current heuristic results in broken or
