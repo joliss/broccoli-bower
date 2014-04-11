@@ -32,7 +32,7 @@ separate file.
 ## Installation
 
 ```
-npm --save-dev broccoli-bower
+npm instal broccoli-bower --save-dev
 ```
 
 ## Usage
