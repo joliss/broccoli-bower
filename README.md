@@ -21,8 +21,13 @@ You should not rely on its behavior for your production apps, and you should
 not rely on its behavior to distribute your libraries.
 
 There will be many cases where the current heuristic results in broken or
-undesirable behavior. This is acceptable. Please do not send pull requests to
-change the behavior, as fixing one edge case will just open up another.
+undesirable behavior. Also, library authors will sometimes update their bower
+packages, randomly breaking things that previously worked with this plugin.
+This is acceptable!
+
+Please do not send pull requests to change the behavior, either to this repo,
+or to other people's bower packages, as fixing one edge case will just open up
+another.
 
 The way forward is to write a mini spec for a configuration syntax to specify
 where in a bower package source files should be picked up, such as `{ mainDir:
