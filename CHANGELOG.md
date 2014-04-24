@@ -1,5 +1,7 @@
 # master
 
+* Make readdir ordering deterministic
+
 # 0.2.0
 
 * Overwrite files in merged tree if `lib` and `"main"` files collide
