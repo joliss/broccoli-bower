@@ -1,5 +1,7 @@
 # master
 
+# 0.2.1
+
 * Make readdir ordering deterministic
 
 # 0.2.0
