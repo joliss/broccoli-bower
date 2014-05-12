@@ -3,15 +3,7 @@ var path = require('path')
 var mergeTrees = require('broccoli-merge-trees')
 var Writer = require('broccoli-writer')
 var helpers = require('broccoli-kitchen-sink-helpers')
-
-
-// Almost the same as using a plain string for a tree; but unlike a plain
-// string, Broccoli won't watch this
-function UnwatchedTree (dir) { this.dir = dir }
-UnwatchedTree.prototype.read = function (readTree) { return this.dir }
-UnwatchedTree.prototype.cleanup = function () { }
-
-
+var UnwatchedTree = require('broccoli-unwatched-tree')
 
 MainFilePicker.prototype = Object.create(Writer.prototype)
 MainFilePicker.prototype.constructor = MainFilePicker
