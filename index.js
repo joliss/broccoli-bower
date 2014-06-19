@@ -31,8 +31,8 @@ MainFilePicker.prototype.write = function (readTree, destDir) {
 
 
 module.exports = findBowerTrees
-function findBowerTrees () {
-  var bowerDir = require('bower-config').read().directory // note: this relies on cwd
+function findBowerTrees (bowerDir) {
+  var bowerDir = bowerDir || require('bower-config').read().directory // note: this relies on cwd
   if (bowerDir == null) throw new Error('Bower did not return a directory')
   var entries = fs.readdirSync(bowerDir).sort()
   var directories = entries.filter(function (f) {
