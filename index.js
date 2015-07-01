@@ -4,6 +4,7 @@ var mergeTrees = require('broccoli-merge-trees')
 var Writer = require('broccoli-writer')
 var helpers = require('broccoli-kitchen-sink-helpers')
 var UnwatchedTree = require('broccoli-unwatched-tree')
+var config = {}
 
 MainFilePicker.prototype = Object.create(Writer.prototype)
 MainFilePicker.prototype.constructor = MainFilePicker
@@ -17,7 +18,15 @@ MainFilePicker.prototype.write = function (readTree, destDir) {
     var mainFile = this.mainFiles[i]
     try {
       if (mainFile.indexOf('*') !== -1 || mainFile.indexOf('?') !== -1) {
-        throw new Error('In ' + this.dir + ': Glob (wildcard) patterns in bower\'s `main` property are not allowed: ' + mainFile)
+        var message = 'ERROR: In ' + this.dir + ': Glob (wildcard) patterns in bower\'s `main` property are not allowed: ' + mainFile
+
+        if (config && config.hasOwnProperty('ignoreGlobError') && config['ignoreGlobError']) {
+          console.error(message)
+          continue;
+        }
+        else {
+          throw new Error(message)
+        }
       }
       helpers.copyPreserveSync(
         path.join(this.dir, mainFile),
@@ -31,7 +40,8 @@ MainFilePicker.prototype.write = function (readTree, destDir) {
 
 
 module.exports = findBowerTrees
-function findBowerTrees () {
+function findBowerTrees (config) {
+  config = config
   var bowerDir = require('bower-config').read().directory // note: this relies on cwd
   if (bowerDir == null) throw new Error('Bower did not return a directory')
   var entries = fs.readdirSync(bowerDir).sort()
